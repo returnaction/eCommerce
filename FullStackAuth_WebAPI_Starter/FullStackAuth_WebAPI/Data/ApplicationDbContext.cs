@@ -37,6 +37,11 @@ namespace FullStackAuth_WebAPI.Data
                         .HasOne(m => m.SellerUser)
                         .WithMany(t => t.PurchasesUserIsSeller)
                         .HasForeignKey(m => m.SellerUserId);
+
+            modelBuilder.Entity<Purchase>()
+                        .HasOne(m => m.ReviewOfPurchase)
+                        .WithOne(t => t.PurchaseOfProductReview)
+                        .HasForeignKey<Review>(m => m.ReviewId);
         }
     }
 }

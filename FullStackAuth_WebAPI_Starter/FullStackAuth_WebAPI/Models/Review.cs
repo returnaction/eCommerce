@@ -25,6 +25,10 @@ namespace FullStackAuth_WebAPI.Models
         public string UserIdOfReview { get; set; }
         public User UserOfReview { get; set; }
 
+        [ForeignKey("Product")]
+        public string ProductIdOfReview { get; set; }
+        public Product ProductOfReview { get; set; }
+
         public List<ReviewImage> ReviewImages { get; set; }
 
         [ForeignKey("Purchase")]
