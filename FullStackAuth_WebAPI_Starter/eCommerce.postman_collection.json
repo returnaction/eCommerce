@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1ed2e123-f7f0-43ff-95b2-bdb676773246",
-		"name": "ASP_NET_Starter",
+		"_postman_id": "b67eb960-9ef1-448c-a305-cd5406c312b1",
+		"name": "eCommerce",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13455599"
+		"_exporter_id": "28100906"
 	},
 	"item": [
 		{
@@ -19,7 +19,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstname\": \"Bob\",\r\n    \"lastname\": \"Bobson\",\r\n    \"username\": \"bob\",\r\n    \"password\": \"Qw12345^\",\r\n    \"email\": \"bob@bob.bob\"\r\n}",
+							"raw": "{\r\n    \"firstname\": \"Bob\",\r\n    \"lastname\": \"Bobson\",\r\n    \"username\": \"bob\",\r\n    \"password\": \"Qw12345^\",\r\n    \"email\": \"bob@bob.bob\",\r\n    \"phonenumber\":\"5612229988\"\r\n}\r\n\r\n// {\r\n//     \"firstname\": \"Bob\",\r\n//     \"lastname\": \"Bobson\",\r\n//     \"username\": \"bob\",\r\n//     \"password\": \"Qw12345^\",\r\n//     \"email\": \"bob@bob.bob\",\r\n//     \"phonenumber\":\"5612229988\"\r\n// }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -262,6 +262,31 @@
 							""
 						]
 					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/user",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

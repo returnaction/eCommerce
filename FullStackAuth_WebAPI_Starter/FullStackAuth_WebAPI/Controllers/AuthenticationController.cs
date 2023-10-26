@@ -29,6 +29,7 @@ namespace FullStackAuth_WebAPI.Controllers
         {
 
             var user = _mapper.Map<User>(userForRegistration);
+            user.RegistrationDate = DateTime.Now;
 
             var result = await _userManager.CreateAsync(user, userForRegistration.Password);
             if (!result.Succeeded)
@@ -41,13 +42,9 @@ namespace FullStackAuth_WebAPI.Controllers
             }
             await _userManager.AddToRoleAsync(user, "USER");
 
-            UserForDisplayDto createdUser = new UserForDisplayDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-            };
+
+
+            UserForDisplayDto createdUser = _mapper.Map<UserForDisplayDto>(user);
             return StatusCode(201, createdUser);
         }
 

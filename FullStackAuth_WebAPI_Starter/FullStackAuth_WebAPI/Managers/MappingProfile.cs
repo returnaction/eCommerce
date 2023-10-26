@@ -9,6 +9,8 @@ namespace FullStackAuth_WebAPI.Managers
         public MappingProfile()
         {
             CreateMap<UserForRegistrationDto, User>();
+            CreateMap<User, UserForDisplayDto>();
         }
     }
 }
+//5612909609
