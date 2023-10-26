@@ -33,6 +33,7 @@ namespace FullStackAuth_WebAPI.Models
 
         public List<ProductImage> ProductImages { get; set; }
         public List<Review> Reviews { get; set; }
+        public List<Purchase> Purchases { get; set; }
 
     }
 }

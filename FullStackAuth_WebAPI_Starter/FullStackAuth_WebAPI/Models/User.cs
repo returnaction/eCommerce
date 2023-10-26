@@ -17,6 +17,9 @@ namespace FullStackAuth_WebAPI.Models
         public List<ProfileImage> ProfileImages { get; set; }
         public List<Product> Products { get; set; }
 
+        public List<Purchase> PurchasesUserIsSeller { get; set; }
+        public List<Purchase> PurchasesUserISBuyer { get; set; }
+
 
     }
 }

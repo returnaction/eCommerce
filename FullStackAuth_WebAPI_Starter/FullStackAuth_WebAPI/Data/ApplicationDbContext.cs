@@ -7,7 +7,13 @@ namespace FullStackAuth_WebAPI.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProfileImage> ProfileImages { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<ReviewImage> ReviewImages { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public ApplicationDbContext(DbContextOptions options)
     : base(options)
@@ -20,6 +26,17 @@ namespace FullStackAuth_WebAPI.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new RolesConfiguration());
+
+            modelBuilder.Entity<Purchase>()
+                    .HasOne(m => m.BuyerUser)
+                    .WithMany(t => t.PurchasesUserISBuyer)
+                    .HasForeignKey(m => m.BuyerUserId);
+
+
+            modelBuilder.Entity<Purchase>()
+                        .HasOne(m => m.SellerUser)
+                        .WithMany(t => t.PurchasesUserIsSeller)
+                        .HasForeignKey(m => m.SellerUserId);
         }
     }
 }
