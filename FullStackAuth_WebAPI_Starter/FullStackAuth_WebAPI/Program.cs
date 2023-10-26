@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace FullStackAuth_WebAPI
@@ -40,7 +41,6 @@ namespace FullStackAuth_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
