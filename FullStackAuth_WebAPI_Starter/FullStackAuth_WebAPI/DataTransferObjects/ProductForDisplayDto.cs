@@ -12,9 +12,11 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
         public double ProductPrice { get; set; }
         public double ProductRaiting { get; set; }
 
+        public string UserIdOfProduct { get; set; }
         public UserForDisplayDto UserOfProduct { get; set; }
 
         public List<ProductImageForDisplayDto> ProductImages { get; set; }
         public List<ReviewForDisplayDto> Reviews { get; set; }
+        public List<PurchaseForDisplayDto> Purchases { get; set; }
     }
 }

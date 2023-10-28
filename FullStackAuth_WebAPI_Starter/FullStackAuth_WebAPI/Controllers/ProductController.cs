@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FullStackAuth_WebAPI.Data;
+using FullStackAuth_WebAPI.DataTransferObjects;
 using FullStackAuth_WebAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,9 @@ namespace FullStackAuth_WebAPI.Controllers
             {
                 List<Product> productofUser = _context.Products.Where(p => p.UserIdOfProduct == userId).ToList();
 
-                var productDto = _mapper.Map<>
+                var productOfUserDto = _mapper.Map<List<ProductForDisplayDto>>(productofUser);
+
+                return StatusCode(200, productOfUserDto);
             }
             catch (Exception ex)
             {
