@@ -14,9 +14,9 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
         public string PhoneNumber { get; set; }
         public DateTime RegistrationDate { get; set; }
 
-        public List<ProfileImage> ProfileImages { get; set; }
-        public List<Product> Products { get; set; }
-        public List<Purchase> PurchasesUserIsSeller { get; set; }
-        public List<Purchase> PurchasesUserISBuyer { get; set; }
+        public List<ProfileImageforDisplayDto> ProfileImages { get; set; }
+        public List<ProductForDisplayDto> Products { get; set; }
+        public List<PurchaseForDisplayDto> PurchasesUserIsSeller { get; set; }
+        public List<PurchaseForDisplayDto> PurchasesUserISBuyer { get; set; }
     }
 }

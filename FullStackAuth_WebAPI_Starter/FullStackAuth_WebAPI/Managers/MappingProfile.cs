@@ -10,6 +10,7 @@ namespace FullStackAuth_WebAPI.Managers
         {
             CreateMap<UserForRegistrationDto, User>();
             CreateMap<User, UserForDisplayDto>();
+            CreateMap<Product,>
         }
     }
 }

@@ -14,7 +14,7 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
 
         public User UserOfProduct { get; set; }
 
-        public List<ProductImage> ProductImages { get; set; }
-        public List<Review> Reviews { get; set; }
+        public List<ProductImageForDisplayDto> ProductImages { get; set; }
+        public List<ReviewForDisplayDto> Reviews { get; set; }
     }
 }
