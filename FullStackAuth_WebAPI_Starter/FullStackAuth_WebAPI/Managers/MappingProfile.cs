@@ -16,6 +16,9 @@ namespace FullStackAuth_WebAPI.Managers
             CreateMap<ProfileImage, ProfileImageforDisplayDto>();
             CreateMap<ReviewImage, ReviewImageForDisplayDto>();
             CreateMap<Review, ReviewForDisplayDto>();
+
+            CreateMap<ProductForRegistrationDto, Product>();
+
         }
     }
 }

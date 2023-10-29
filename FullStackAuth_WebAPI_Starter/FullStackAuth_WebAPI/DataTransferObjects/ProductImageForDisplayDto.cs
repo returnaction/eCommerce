@@ -11,5 +11,8 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
 
         public string ProductIdOfImage { get; set; }
         public ProductForDisplayDto ProductOfImage { get; set; }
+
+        public IFormFile ProductImageFile { get; set; }
+
     }
 }

@@ -24,6 +24,7 @@ namespace FullStackAuth_WebAPI.Models
         public int ProductAmount { get; set; }
         public double ProductPrice { get; set; }
         public double ProductRaiting { get; set; }
+        public DateTime ProductRegistrationDate { get; set; }
 
         //Nav Props
 
