@@ -93,6 +93,7 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
+
         private string ImageBase64Encode(Image img)
         {
             using (Image image = img)
