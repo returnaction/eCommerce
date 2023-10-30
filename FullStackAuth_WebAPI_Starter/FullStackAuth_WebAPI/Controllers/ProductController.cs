@@ -51,7 +51,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
 
                 var newProduct = _mapper.Map<Product>(product);
-                newProduct.ProductIsAvailable = newProduct.ProductAmount > 0 ? true : false;
+                newProduct.IsAvailable = newProduct.ProductAmount > 0 && product.IsAvailableAfterRegistration? true : false;
                 newProduct.UserIdOfProduct = userId;
                 newProduct.ProductRegistrationDate = DateTime.Now;
                 newProduct.ProductImages = new List<ProductImage>();

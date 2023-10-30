@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231026200159_Init1")]
-    partial class Init1
+    [Migration("20231030141317_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,18 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("ProductAmount")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductDescription")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<bool>("ProductIsAvailable")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProductName")
                         .HasMaxLength(30)
@@ -46,6 +49,9 @@ namespace FullStackAuth_WebAPI.Migrations
 
                     b.Property<double>("ProductRaiting")
                         .HasColumnType("double");
+
+                    b.Property<DateTime>("ProductRegistrationDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserIdOfProduct")
                         .HasColumnType("longtext");
@@ -320,13 +326,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "93fa4cbe-9c4f-4bf2-ab8a-fd5032f3469b",
+                            Id = "d7c13671-7c5e-41be-94b5-1b539abee1e8",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "8f4a5ab0-7a6e-4366-b38b-5d2256587549",
+                            Id = "b228f121-96bf-4dfe-9345-88d984278a79",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

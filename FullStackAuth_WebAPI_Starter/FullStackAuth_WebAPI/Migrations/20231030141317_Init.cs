@@ -9,7 +9,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace FullStackAuth_WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Init1 : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -180,10 +180,12 @@ namespace FullStackAuth_WebAPI.Migrations
                     ProductId = table.Column<string>(type: "varchar(255)", nullable: false),
                     ProductName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: true),
                     ProductDescription = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: true),
-                    ProductIsAvailable = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     ProductAmount = table.Column<int>(type: "int", nullable: false),
                     ProductPrice = table.Column<double>(type: "double", nullable: false),
                     ProductRaiting = table.Column<double>(type: "double", nullable: false),
+                    ProductRegistrationDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserIdOfProduct = table.Column<string>(type: "longtext", nullable: true),
                     UserOfProductId = table.Column<string>(type: "varchar(255)", nullable: true)
                 },
@@ -338,8 +340,8 @@ namespace FullStackAuth_WebAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "8f4a5ab0-7a6e-4366-b38b-5d2256587549", null, "Admin", "ADMIN" },
-                    { "93fa4cbe-9c4f-4bf2-ab8a-fd5032f3469b", null, "User", "USER" }
+                    { "b228f121-96bf-4dfe-9345-88d984278a79", null, "Admin", "ADMIN" },
+                    { "d7c13671-7c5e-41be-94b5-1b539abee1e8", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(

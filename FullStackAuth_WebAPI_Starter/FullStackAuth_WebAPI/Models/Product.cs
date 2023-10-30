@@ -20,7 +20,8 @@ namespace FullStackAuth_WebAPI.Models
         [MaxLength(500)]
         [MinLength(5)]
         public string ProductDescription { get; set; }
-        public bool ProductIsAvailable { get; set; }
+        public bool IsAvailable { get; set; }
+        public bool IsDeleted { get; set; }
         public int ProductAmount { get; set; }
         public double ProductPrice { get; set; }
         public double ProductRaiting { get; set; }

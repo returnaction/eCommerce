@@ -24,15 +24,18 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("ProductId")
                         .HasColumnType("varchar(255)");
 
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("ProductAmount")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductDescription")
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
-
-                    b.Property<bool>("ProductIsAvailable")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ProductName")
                         .HasMaxLength(30)
@@ -320,13 +323,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8e2f47fe-1191-472c-8ae3-6ce02d88b160",
+                            Id = "d7c13671-7c5e-41be-94b5-1b539abee1e8",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "3ef10428-4679-49b3-965d-509697efa958",
+                            Id = "b228f121-96bf-4dfe-9345-88d984278a79",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

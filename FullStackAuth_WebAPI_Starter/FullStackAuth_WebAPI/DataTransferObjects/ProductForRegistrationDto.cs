@@ -9,6 +9,8 @@ namespace FullStackAuth_WebAPI.DataTransferObjects
         public int ProductAmount { get; set; }
         public double ProductPrice { get; set; }
 
+        public bool IsAvailableAfterRegistration { get; set; }
+
 
 
         public List<ProductImageForDisplayDto> ProductImages { get; set; }
