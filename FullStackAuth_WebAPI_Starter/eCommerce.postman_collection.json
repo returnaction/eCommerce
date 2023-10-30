@@ -316,6 +316,28 @@
 					"response": []
 				},
 				{
+					"name": "Get All Available Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/product/user/0f6df984-7671-40df-b9d8-311d741e75d0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"user",
+								"0f6df984-7671-40df-b9d8-311d741e75d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Register a Product",
 					"request": {
 						"method": "POST",
@@ -362,6 +384,40 @@
 								"api",
 								"product",
 								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5pa29iZXI0IiwiZW1haWwiOiJuaWs0QGdtYWlsLmNvbSIsImlkIjoiMGY2ZGY5ODQtNzY3MS00MGRmLWI5ZDgtMzExZDc0MWU3NWQwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTY5OTMxMzQ1OSwiaXNzIjoiRnVsbFN0YWNrQXV0aF9XZWJBUEkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.AoUjGS2HmHlckKdTZITiUp7PqL7FualfDmAIJ-EDkkE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/product/da368f4b-02de-4f1f-852d-5e9ffcac2fb7",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"da368f4b-02de-4f1f-852d-5e9ffcac2fb7"
 							],
 							"query": [
 								{
