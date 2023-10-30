@@ -25,6 +25,24 @@ namespace FullStackAuth_WebAPI.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public IActionResult GetAllAvailableProducts()
+        {
+            try
+            {
+                var products = _context.Products.Where(p => p.IsAvailable == true && p.IsDeleted == false).ToList();
+
+                var productsDto = _mapper.Map<List<ProductForDisplayDto>>(products);
+
+                return StatusCode(200, productsDto);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet("user/{userid}")]
         public IActionResult GetProductsByUserId(string userId)
         {
@@ -112,7 +130,10 @@ namespace FullStackAuth_WebAPI.Controllers
                 if (product.UserIdOfProduct != userid)
                     return Unauthorized();
                 if (product.Purchases.Count > 0)
-                    product.IsDeleted = false;
+                {
+                    product.IsDeleted = true;
+                    product.IsAvailable = false;
+                }
                 else
                     _context.Products.Remove(product);
 
