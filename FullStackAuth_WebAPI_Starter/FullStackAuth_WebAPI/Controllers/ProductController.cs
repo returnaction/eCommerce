@@ -5,6 +5,7 @@ using FullStackAuth_WebAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Security.Claims;
@@ -93,7 +94,37 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
+        [HttpDelete("{productid}"), Authorize]
+        public IActionResult DeleteProduct(string productId)
+        {
+            try
+            {
+                string userid = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userid))
+                    return Unauthorized();
 
+                var product = _context.Products
+                    .Include(p => p.Purchases)
+                    .FirstOrDefault(x => x.ProductId == productId);
+
+                if (product == null)
+                    return NotFound();
+                if (product.UserIdOfProduct != userid)
+                    return Unauthorized();
+                if (product.Purchases.Count > 0)
+                    product.IsDeleted = false;
+                else
+                    _context.Products.Remove(product);
+
+                _context.SaveChanges();
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
         private string ImageBase64Encode(Image img)
         {
             using (Image image = img)
