@@ -146,6 +146,48 @@ namespace FullStackAuth_WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPut("{productid}"), Authorize]
+        public IActionResult UpdateProduct(string productId,[FromForm] ProductForRegistrationDto productToUpdate)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized();
+
+                var existProduct = _context.Products
+                    .Include(purch => purch.Purchases)
+                    .FirstOrDefault(p => p.ProductId == productId);
+
+                if (existProduct is null)
+                    return NotFound();
+
+                if (existProduct.UserIdOfProduct != userId)
+                    return Unauthorized();
+
+                if(existProduct.Purchases.Count > 0)
+                {
+                    return StatusCode(304);
+                }
+                else
+                {
+                    existProduct.ProductName = productToUpdate.ProductName;
+                    existProduct.ProductDescription = productToUpdate.ProductName;
+                    existProduct.ProductAmount = productToUpdate.ProductAmount;
+                    existProduct.IsAvailable = productToUpdate.IsAvailableAfterRegistration;
+                    //TODO add images later
+                    _context.SaveChanges();
+
+                    var productDto = _mapper.Map<ProductForDisplayDto>(existProduct);
+                    return StatusCode(200, productDto);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         private string ImageBase64Encode(Image img)
         {
             using (Image image = img)
