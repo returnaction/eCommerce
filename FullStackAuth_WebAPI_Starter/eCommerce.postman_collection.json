@@ -542,6 +542,41 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Buy a Product By Id",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6ImVjNzk0MWZiLTcxZjItNDQyZS1iMDBkLWE5ODRkNjA2NTFjMCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2OTk0OTg5NjAsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.y4ahIboIpBti2UMB7nLmjygxyM6AY2eO-N9qY-CU2fw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/product/purchase/b160abe4-dace-442b-b702-16f788e5b431/amount/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"purchase",
+								"b160abe4-dace-442b-b702-16f788e5b431",
+								"amount",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
