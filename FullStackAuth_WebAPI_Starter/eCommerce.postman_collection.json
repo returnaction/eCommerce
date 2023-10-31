@@ -287,6 +287,58 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update User by Id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5pa29iZXI0IiwiZW1haWwiOiJuaWs0QGdtYWlsLmNvbSIsImlkIjoiM2Q5ZTUxNDktYjJjZS00ZjE4LTllY2QtZjMwM2ZjNTI3ODY5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTY5OTQ5MjgwMiwiaXNzIjoiRnVsbFN0YWNrQXV0aF9XZWJBUEkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.0Bt5t4alUOhKQKKzt269O7X-Ltgix3IkSjrS2jJYei0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "firstName",
+									"value": "Nikitos",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Barbos",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "bambo2835@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "1111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/user/3d9e5149-b2ce-4f18-9ecd-f303fc527869",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"user",
+								"3d9e5149-b2ce-4f18-9ecd-f303fc527869"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -384,6 +436,65 @@
 								"api",
 								"product",
 								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5pa29iZXI0IiwiZW1haWwiOiJuaWs0QGdtYWlsLmNvbSIsImlkIjoiM2Q5ZTUxNDktYjJjZS00ZjE4LTllY2QtZjMwM2ZjNTI3ODY5IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTY5OTQ5MjgwMiwiaXNzIjoiRnVsbFN0YWNrQXV0aF9XZWJBUEkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.0Bt5t4alUOhKQKKzt269O7X-Ltgix3IkSjrS2jJYei0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productName",
+									"value": "Spoon",
+									"type": "text"
+								},
+								{
+									"key": "productDescription",
+									"value": "To eat BORSH",
+									"type": "text"
+								},
+								{
+									"key": "productAmount",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "productPrice",
+									"value": "4.99",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/product/1f5bce7b-2bca-4cb6-b170-6791c095b7dc",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"1f5bce7b-2bca-4cb6-b170-6791c095b7dc"
 							],
 							"query": [
 								{
