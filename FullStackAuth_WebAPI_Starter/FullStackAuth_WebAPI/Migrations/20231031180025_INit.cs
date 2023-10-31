@@ -9,7 +9,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace FullStackAuth_WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class INit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -248,7 +248,9 @@ namespace FullStackAuth_WebAPI.Migrations
                 {
                     PurchaseId = table.Column<string>(type: "varchar(255)", nullable: false),
                     OpenDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    AwaitingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AwaitingToSendDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AwaitingToRecieveDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ReciveDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     ClosingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     StatusOfPurchase = table.Column<int>(type: "int", nullable: false),
                     ProductIdOfPurchase = table.Column<string>(type: "longtext", nullable: true),
@@ -340,8 +342,8 @@ namespace FullStackAuth_WebAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "b228f121-96bf-4dfe-9345-88d984278a79", null, "Admin", "ADMIN" },
-                    { "d7c13671-7c5e-41be-94b5-1b539abee1e8", null, "User", "USER" }
+                    { "7b669ddd-5a7a-47eb-8043-ab36e1c688b7", null, "Admin", "ADMIN" },
+                    { "c896e8b4-6551-40d9-93d5-7c0dd36e0e75", null, "User", "USER" }
                 });
 
             migrationBuilder.CreateIndex(

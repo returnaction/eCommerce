@@ -7,10 +7,17 @@ namespace FullStackAuth_WebAPI.Models
 {
     public class Purchase
     {
+        public Purchase()
+        {
+            PurchaseId = Guid.NewGuid().ToString();
+        }
+
         [Key]
         public string PurchaseId { get; set; }
         public DateTime OpenDate { get; set; }
-        public DateTime AwaitingDate { get; set; }
+        public DateTime AwaitingToSendDate { get; set; }
+        public DateTime AwaitingToRecieveDate { get; set; }
+        public DateTime ReciveDate { get; set; }
         public DateTime ClosingDate { get; set; }
         public PurchaseStatus StatusOfPurchase { get; set; }
 

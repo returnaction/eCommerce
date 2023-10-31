@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231030141317_Init")]
-    partial class Init
+    [Migration("20231031180025_INit")]
+    partial class INit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,7 +119,10 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("PurchaseId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("AwaitingDate")
+                    b.Property<DateTime>("AwaitingToRecieveDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime>("AwaitingToSendDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("BuyerUserId")
@@ -136,6 +139,9 @@ namespace FullStackAuth_WebAPI.Migrations
 
                     b.Property<string>("ProductOfPurchaseProductId")
                         .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("ReciveDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("ReviewIdOfPurchase")
                         .HasColumnType("longtext");
@@ -326,13 +332,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d7c13671-7c5e-41be-94b5-1b539abee1e8",
+                            Id = "c896e8b4-6551-40d9-93d5-7c0dd36e0e75",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "b228f121-96bf-4dfe-9345-88d984278a79",
+                            Id = "7b669ddd-5a7a-47eb-8043-ab36e1c688b7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

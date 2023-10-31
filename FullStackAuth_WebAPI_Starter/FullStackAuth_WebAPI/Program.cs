@@ -27,7 +27,11 @@ namespace FullStackAuth_WebAPI
             builder.Services.ConfigureIdentity();
             builder.Services.ConfigureJWT(builder.Configuration);
             builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
-            builder.Services.AddControllers();
+
+            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

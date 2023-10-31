@@ -2,6 +2,7 @@
 using FullStackAuth_WebAPI.Data;
 using FullStackAuth_WebAPI.DataTransferObjects;
 using FullStackAuth_WebAPI.Models;
+using FullStackAuth_WebAPI.Models.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -70,7 +71,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return Unauthorized();
 
                 var newProduct = _mapper.Map<Product>(product);
-                newProduct.IsAvailable = newProduct.ProductAmount > 0 && product.IsAvailableAfterRegistration? true : false;
+                newProduct.IsAvailable = newProduct.ProductAmount > 0 && product.IsAvailableAfterRegistration ? true : false;
                 newProduct.UserIdOfProduct = userId;
                 newProduct.ProductRegistrationDate = DateTime.Now;
                 newProduct.ProductImages = new List<ProductImage>();
@@ -147,7 +148,7 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
         [HttpPut("{productid}"), Authorize]
-        public IActionResult UpdateProduct(string productId,[FromForm] ProductForRegistrationDto productToUpdate)
+        public IActionResult UpdateProduct(string productId, [FromForm] ProductForRegistrationDto productToUpdate)
         {
             try
             {
@@ -165,7 +166,7 @@ namespace FullStackAuth_WebAPI.Controllers
                 if (existProduct.UserIdOfProduct != userId)
                     return Unauthorized();
 
-                if(existProduct.Purchases.Count > 0)
+                if (existProduct.Purchases.Count > 0)
                 {
                     return StatusCode(304);
                 }
@@ -181,6 +182,50 @@ namespace FullStackAuth_WebAPI.Controllers
                     var productDto = _mapper.Map<ProductForDisplayDto>(existProduct);
                     return StatusCode(204, productDto);
                 }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("purchase/{productid}/amount/{amount}"), Authorize]
+        public IActionResult BuyProduct(string productId, int amount)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized();
+
+                var product = _context.Products
+                    .Include(purchase => purchase.Purchases)
+                    .FirstOrDefault(p => p.ProductId == productId);
+                if (product is null)
+                    return NotFound();
+
+                if(product.ProductAmount < amount)
+                {
+                    return Ok("Not enough items");
+                }
+
+                product.ProductAmount -= amount;
+
+                var newPurchase = new Purchase()
+                {
+                    StatusOfPurchase = PurchaseStatus.Open,
+                    OpenDate = DateTime.Now,
+
+                    BuyerUserId = userId,
+                    SellerUserId = product.UserIdOfProduct
+                };
+                product.Purchases.Add(newPurchase);
+
+                _context.SaveChanges();
+
+                var newPurchaseDto = _mapper.Map<PurchaseForDisplayDto>(newPurchase);
+
+                return StatusCode(201, newPurchaseDto);
             }
             catch (Exception ex)
             {
