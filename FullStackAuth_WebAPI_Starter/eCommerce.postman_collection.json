@@ -10,7 +10,7 @@
 			"name": "Authentication",
 			"item": [
 				{
-					"name": "Register_User",
+					"name": "Register_User Nik",
 					"protocolProfileBehavior": {
 						"strictSSL": false
 					},
@@ -42,7 +42,69 @@
 					"response": []
 				},
 				{
-					"name": "Login_User",
+					"name": "Register_User Bob",
+					"protocolProfileBehavior": {
+						"strictSSL": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Bob\",\r\n    \"lastname\": \"Bobson\",\r\n    \"username\": \"bob\",\r\n    \"password\": \"Qw12345^\",\r\n    \"email\": \"bob@bob.bob\",\r\n    \"phonenumber\":\"5612229988\"\r\n}\r\n\r\n// {\r\n//     \"firstname\": \"Bob\",\r\n//     \"lastname\": \"Bobson\",\r\n//     \"username\": \"bob\",\r\n//     \"password\": \"Qw12345^\",\r\n//     \"email\": \"bob@bob.bob\",\r\n//     \"phonenumber\":\"5612229988\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/authentication",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"authentication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User Nik",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"bob\",\r\n    \"password\": \"Qw12345^\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/authentication/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User Bob",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -571,6 +633,93 @@
 								"b160abe4-dace-442b-b702-16f788e5b431",
 								"amount",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send a product By Seller",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Im5pa29iZXI0IiwiZW1haWwiOiJuaWs0QGdtYWlsLmNvbSIsImlkIjoiM2E3ZWJjYjgtNTU3Zi00MGNjLWE2YjQtOTFlNjliZDc1MWFlIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVXNlciIsImV4cCI6MTY5OTUwMjQ1OCwiaXNzIjoiRnVsbFN0YWNrQXV0aF9XZWJBUEkiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.cPz2OxQdA24Yx6yB0yORLXkGqphYLn_ngweXvMDa2EA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/product/purchase/ff9b06ad-2424-4305-aefe-b1755f3697d8/send",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"purchase",
+								"ff9b06ad-2424-4305-aefe-b1755f3697d8",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recived Product by Buyer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6ImVjNzk0MWZiLTcxZjItNDQyZS1iMDBkLWE5ODRkNjA2NTFjMCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2OTk1MDMzNDAsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.e_x1zlDsR-GGllR1HPDihrdvEKNKPIJEQXFaJh-LcY8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/product/purchase/recieveproduct/ff9b06ad-2424-4305-aefe-b1755f3697d8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"purchase",
+								"recieveproduct",
+								"ff9b06ad-2424-4305-aefe-b1755f3697d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close Purchase By Seller",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImJvYiIsImVtYWlsIjoiYm9iQGJvYi5ib2IiLCJpZCI6ImVjNzk0MWZiLTcxZjItNDQyZS1iMDBkLWE5ODRkNjA2NTFjMCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2OTk1MDMzNDAsImlzcyI6IkZ1bGxTdGFja0F1dGhfV2ViQVBJIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAwMSJ9.e_x1zlDsR-GGllR1HPDihrdvEKNKPIJEQXFaJh-LcY8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/product/purchase/clodepurchase/ff9b06ad-2424-4305-aefe-b1755f3697d8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"product",
+								"purchase",
+								"clodepurchase",
+								"ff9b06ad-2424-4305-aefe-b1755f3697d8"
 							]
 						}
 					},

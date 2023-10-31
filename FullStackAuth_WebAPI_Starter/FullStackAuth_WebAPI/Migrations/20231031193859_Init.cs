@@ -9,7 +9,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace FullStackAuth_WebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class INit : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -248,10 +248,9 @@ namespace FullStackAuth_WebAPI.Migrations
                 {
                     PurchaseId = table.Column<string>(type: "varchar(255)", nullable: false),
                     OpenDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    AwaitingToSendDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    AwaitingToRecieveDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ReciveDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ClosingDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    SendDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    RecieveDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    CloseDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     StatusOfPurchase = table.Column<int>(type: "int", nullable: false),
                     ProductIdOfPurchase = table.Column<string>(type: "longtext", nullable: true),
                     ProductOfPurchaseProductId = table.Column<string>(type: "varchar(255)", nullable: true),
@@ -342,8 +341,8 @@ namespace FullStackAuth_WebAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "7b669ddd-5a7a-47eb-8043-ab36e1c688b7", null, "Admin", "ADMIN" },
-                    { "c896e8b4-6551-40d9-93d5-7c0dd36e0e75", null, "User", "USER" }
+                    { "c12b7048-a931-45d0-8524-6789ff1d6601", null, "User", "USER" },
+                    { "f59c1dc1-b309-4dce-abec-ee8c86d6a4e2", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(

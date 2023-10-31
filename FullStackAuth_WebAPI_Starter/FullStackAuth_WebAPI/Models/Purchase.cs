@@ -15,13 +15,9 @@ namespace FullStackAuth_WebAPI.Models
         [Key]
         public string PurchaseId { get; set; }
         public DateTime OpenDate { get; set; }
-        //rename this to SendDate
-        public DateTime AwaitingToSendDate { get; set; }
-        //rename this to RecievedDate
-        public DateTime AwaitingToRecieveDate { get; set; }
-        //delete this
-        public DateTime ReciveDate { get; set; }
-        public DateTime ClosingDate { get; set; }
+        public DateTime SendDate { get; set; }
+        public DateTime RecieveDate { get; set; }
+        public DateTime CloseDate { get; set; }
         public PurchaseStatus StatusOfPurchase { get; set; }
 
         //Nav Props
@@ -40,9 +36,6 @@ namespace FullStackAuth_WebAPI.Models
         [ForeignKey("SellerUserId")]
         public string SellerUserId { get; set; }
         public User SellerUser { get; set; }
-
-
-
 
     }
 }

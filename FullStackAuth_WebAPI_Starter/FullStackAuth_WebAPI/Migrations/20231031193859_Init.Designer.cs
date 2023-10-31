@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FullStackAuth_WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231031180025_INit")]
-    partial class INit
+    [Migration("20231031193859_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -119,16 +119,10 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("PurchaseId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("AwaitingToRecieveDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("AwaitingToSendDate")
-                        .HasColumnType("datetime(6)");
-
                     b.Property<string>("BuyerUserId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("ClosingDate")
+                    b.Property<DateTime>("CloseDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("OpenDate")
@@ -140,7 +134,7 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.Property<string>("ProductOfPurchaseProductId")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<DateTime>("ReciveDate")
+                    b.Property<DateTime>("RecieveDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ReviewIdOfPurchase")
@@ -148,6 +142,9 @@ namespace FullStackAuth_WebAPI.Migrations
 
                     b.Property<string>("SellerUserId")
                         .HasColumnType("varchar(255)");
+
+                    b.Property<DateTime>("SendDate")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("StatusOfPurchase")
                         .HasColumnType("int");
@@ -332,13 +329,13 @@ namespace FullStackAuth_WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c896e8b4-6551-40d9-93d5-7c0dd36e0e75",
+                            Id = "c12b7048-a931-45d0-8524-6789ff1d6601",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "7b669ddd-5a7a-47eb-8043-ab36e1c688b7",
+                            Id = "f59c1dc1-b309-4dce-abec-ee8c86d6a4e2",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

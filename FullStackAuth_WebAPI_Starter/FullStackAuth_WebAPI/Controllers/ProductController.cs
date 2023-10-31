@@ -254,7 +254,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return BadRequest();
 
                 purchase.StatusOfPurchase = PurchaseStatus.Send;
-                purchase.AwaitingToSendDate = DateTime.Now;
+                purchase.SendDate = DateTime.Now;
 
                 _context.SaveChanges();
 
@@ -286,7 +286,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return BadRequest();
 
                 purchase.StatusOfPurchase = PurchaseStatus.Recieved;
-                purchase.ReciveDate = DateTime.Now;
+                purchase.RecieveDate = DateTime.Now;
 
                 _context.SaveChanges();
 
@@ -319,7 +319,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     return BadRequest();
 
                 purchase.StatusOfPurchase = PurchaseStatus.Closed;
-                purchase.ClosingDate = DateTime.Now;
+                purchase.CloseDate = DateTime.Now;
 
                 _context.SaveChanges();
 
