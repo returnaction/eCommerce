@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Formats.Asn1;
 using System.Security.Claims;
 
 namespace FullStackAuth_WebAPI.Controllers
@@ -233,6 +234,105 @@ namespace FullStackAuth_WebAPI.Controllers
             }
         }
 
+        [HttpPost("purchase/{purchaseId}/send"), Authorize]
+        public IActionResult SendProduct(string purchaseId)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized();
+
+                var purchase = _context.Purchases.FirstOrDefault(p => p.PurchaseId == purchaseId);
+                if (purchase is null)
+                    return NotFound();
+
+                if (purchase.SellerUserId != userId)
+                    return BadRequest();
+
+                if (purchase.StatusOfPurchase != PurchaseStatus.Open)
+                    return BadRequest();
+
+                purchase.StatusOfPurchase = PurchaseStatus.Send;
+                purchase.AwaitingToSendDate = DateTime.Now;
+
+                _context.SaveChanges();
+
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("purchase/recieveproduct/{purchaseId}"), Authorize]
+        public IActionResult ReceiveProduct(string purchaseId)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized();
+
+                var purchase = _context.Purchases.FirstOrDefault(p => p.PurchaseId == purchaseId);
+                if (purchase is null)
+                    return NotFound();
+
+                if (purchase.BuyerUserId != userId)
+                    return BadRequest();
+
+                if (purchase.StatusOfPurchase != PurchaseStatus.Send)
+                    return BadRequest();
+
+                purchase.StatusOfPurchase = PurchaseStatus.Recieved;
+                purchase.ReciveDate = DateTime.Now;
+
+                _context.SaveChanges();
+
+                return StatusCode(201);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("purchase/clodepurchase/{purchaseId}"), Authorize]
+        public IActionResult ClosePurchase(string purchaseId)
+        {
+            try
+            {
+                string userId = User.FindFirstValue("id");
+                if (string.IsNullOrEmpty(userId))
+                    return Unauthorized();
+
+                var purchase = _context.Purchases.FirstOrDefault(p => p.PurchaseId == purchaseId);
+                if (purchase is null)
+                    return NotFound();
+
+                if (purchase.BuyerUserId != userId)
+                    return BadRequest();
+
+                if (purchase.StatusOfPurchase != PurchaseStatus.Recieved)
+                    return BadRequest();
+
+                purchase.StatusOfPurchase = PurchaseStatus.Closed;
+                purchase.ClosingDate = DateTime.Now;
+
+                _context.SaveChanges();
+
+                return StatusCode(201);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
         private string ImageBase64Encode(Image img)
         {
             using (Image image = img)
@@ -246,6 +346,21 @@ namespace FullStackAuth_WebAPI.Controllers
                     string base64String = Convert.ToBase64String(imageBytes);
                     return base64String;
                 }
+            }
+        }
+
+        private PurchaseStatus GetPreviousPurchaseStatus(PurchaseStatus purchaseStatus)
+        {
+            switch(purchaseStatus)
+            {
+                case PurchaseStatus.Send:
+                    return PurchaseStatus.Open;
+                case PurchaseStatus.Recieved:
+                    return PurchaseStatus.Send;
+                case PurchaseStatus.Closed:
+                    return PurchaseStatus.Recieved;
+                default:
+                    return PurchaseStatus.None;
             }
         }
     }
