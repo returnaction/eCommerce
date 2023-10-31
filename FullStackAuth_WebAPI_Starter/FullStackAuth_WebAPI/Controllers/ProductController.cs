@@ -179,7 +179,7 @@ namespace FullStackAuth_WebAPI.Controllers
                     _context.SaveChanges();
 
                     var productDto = _mapper.Map<ProductForDisplayDto>(existProduct);
-                    return StatusCode(200, productDto);
+                    return StatusCode(204, productDto);
                 }
             }
             catch (Exception ex)
